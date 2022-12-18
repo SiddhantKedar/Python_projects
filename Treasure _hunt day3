@@ -1,0 +1,22 @@
+print("Welcome to treasure Island.\nYour mission is to find the treasure.")
+
+direction=input("Would you like to go Left or Right? \n")
+direction=direction.lower()
+if direction== "left":
+    choice= input("Would you Swim or Wait? \n")
+    choice=choice.lower()
+    if choice== "wait":
+        door= input("Choose a Door - Red Blue Yellow?\n")
+        door= door.lower()
+        if door=="red":
+            print("Red is for fire.\nGAME OVER ")
+        elif door=="blue":
+            print("As usual you are not good at making right life choices.\nGAME OVER")
+        elif door=="yellow":
+            print("Congratulation you won for once. ")
+        else:
+            print("You cannot even type properly")
+    else:
+        print("Too bad you cannot swim.\nGAME OVER")
+else:
+    print("Ofcourse you choose the wrong one.\nGAME OVER")
