@@ -1,0 +1,74 @@
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+import random
+print("Welcome to Rock, Paper, Scissors")
+player_choice=int(input("What do you choose? 0 for Rock, 1 for Paper, 2 for Scissors\n"))
+
+#using random to get a choice
+coms_choice= random.randint(0, 2)
+
+#if i pick Rock (0)
+if player_choice==0 and coms_choice==1:
+    print(rock)
+    print(f"Computer chose: \n{paper}\nYou Lost")
+elif player_choice==0 and coms_choice==2:
+    print(rock)
+    print(f"Computer chose: \n{scissors}\nYou Won")
+elif player_choice==0 and coms_choice==0:
+    print(rock)
+    print(f"Computer chose: \n{rock}\nIts a Draw")
+
+#if i pick paper(1)
+elif player_choice==1 and coms_choice==0:
+    print(paper)
+    print(f"Computer chose: \n{rock}\nYou Won")
+elif player_choice==1 and coms_choice==2:
+    print(paper)
+    print(f"Computer chose: \n{scissors}\nYou Lost")
+elif player_choice==1 and coms_choice==1:
+    print(paper)
+    print(f"Computer chose: \n{paper}\nIts a Draw")
+
+#if i pick scissors(2)
+elif player_choice==2 and coms_choice==0:
+    print(scissors)
+    print(f"Computer chose: \n{rock}\nYou Lost")
+elif player_choice==2 and coms_choice==1:
+    print(scissors)
+    print(f"Computer chose: \n{paper}\nYou Won")
+elif player_choice==2 and coms_choice==2:
+    print(scissors)
+    print(f"Computer chose: \n{scissors}\nIts a Draw")
+
+else:
+    print("Enter number between only 0 to 2")
+
+
+
+
+
+
