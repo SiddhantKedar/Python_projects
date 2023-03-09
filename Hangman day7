@@ -1,0 +1,103 @@
+import random
+
+words=["words","main", "salvation","donor","balance","define","representative","ticket","quiet","stamp","skilled","pattern","emergency","expectation","technology","animal","is"
+,"hammer","paint","monk","vegetation","haunt","pyramid","grimace","composer","presence","promote","blonde","wine","registration","area","expose","witness","investment","weapon","exempt","collapse","dismiss","stomach","leash","insight","orange","prison","inflate","temptation","anger","lie","dilute","prosecution","maid","crew"]
+
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
+logo = ''' 
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/    '''
+print(logo)
+lives=6
+chosen_word=random.choice(words)
+word_list= []
+display=[]
+for i in chosen_word:
+    word_list.append(i)
+for i in range(len(word_list)):
+    display.append("_")
+game_end= True
+
+while game_end==True:
+    guess = input("Guess a Letter:\n").lower()
+    for position in range(len(word_list)):
+        letter= word_list[position]
+        if letter == guess:
+            display[position]= letter
+    if guess not in word_list:
+
+        print("Wrong Guess you lost a life ")
+        lives -= 1
+        print(stages[lives])
+        print(f"You have {lives} left")
+        if lives == 0:
+            print("You Lost")
+            game_end=False
+    print(display)
+
+    if "_" not in display:
+        print("You won")
+        lives=0
+
