@@ -1,0 +1,30 @@
+from replit import clear  #figure out to clear console
+import art
+print(art.logo)
+print("Welcome to Secret Auction program")
+bids={}
+num=0
+continue_game=True
+while continue_game:
+  bidder= input("Enter your name : ")
+  bid= int(input("Enter the amount: $"))
+  num += 1
+  bids[bidder]=bid
+  next_bidder= input("Are there any other bidder? Type 'yes' or 'no'.\n")
+  if next_bidder=="yes":
+    clear()
+  elif next_bidder=="no":
+    break
+  else:
+    clear()
+    print("Please put either 'yes' or 'no'.")
+    next_bidder= input("Are there any other bidder? Type 'yes' or 'no'.\n")
+maximum=0
+winner=""
+for i in bids:
+  bid_amount= bids[i]
+  if bid_amount> maximum:
+    maximum=bid_amount
+    winner= i
+clear()
+print(f"And the WINNER of Auction is {winner} with Highest bid of {maximum}.\nCongradulations")
