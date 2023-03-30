@@ -1,0 +1,39 @@
+#calculator (missing clear())
+
+def add(num1, num2):
+    return num1 + num2
+
+def sub(num1, num2):
+    return num1 - num2
+
+def mul(num1, num2):
+    return num1 * num2
+
+def div(num1, num2):
+    return num1 / num2
+
+operations = {"+": add,
+              "-": sub,
+              "*": mul,
+              "/": div, }
+
+def calculator():
+    num1 = float(input("Enter first number: "))
+    continue_calc = True
+    for ops in operations:
+        print(ops)
+    while continue_calc:
+        op = input("Pick an operation: ")
+        num2 = float(input("Enter the next number: "))
+        operation_perform = operations[op]
+        answer = operation_perform(num1, num2)
+        print(f"{num1} {op} {num2} = {answer}")
+        choice = input(f"Type 'y' to continue operation on {answer}, or 'n' to start over: ")
+        if choice == "y":
+            num1 = answer
+        elif choice == "n":
+            continue_calc = False
+            calculator()
+
+calculator()
+print(f"{num1} {op} {num2} = {answer}")
