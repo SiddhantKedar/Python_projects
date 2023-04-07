@@ -1,0 +1,68 @@
+import random
+
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+print(""" ############### Our Blackjack House Rules #####################""")
+print("The person closer to score of 21 wins. \nDeck is unlimited and there no Jokers.")
+def deal_card():
+  return random.choice(cards)
+
+user_cards = []
+computer_cards = []
+game_over = False
+
+for deal in range(2):
+  user_cards.append(deal_card())
+  computer_cards.append(deal_card())
+
+def calculate_score(cards):
+  score = sum(cards)
+  if 11 in cards and 10 in cards and len(cards) == 2:
+    score = 0
+    return score
+  elif 11 in cards and score > 21:
+    cards.remove(11)
+    cards.append(1)
+  return score
+
+def compare(user_score, coms_score):
+  if user_score == coms_score:
+    return "Its a draw"
+  elif user_score > 21 and coms_score > 21:
+    return "You Lost"
+  elif coms_score == 0:
+    return "Computer Won by Blackjack"
+  elif user_score == 0:
+    return "You won Blackjack"
+  elif user_score > 21:
+    return "You went over. You Lost"
+  elif coms_score > 21:
+    return "You won"
+  elif user_score > coms_score:
+    return "You Won"
+  else:
+    return "You Lost"
+  
+while not game_over:
+  user_score = calculate_score(user_cards)
+  coms_score = calculate_score(computer_cards)
+  print(f"User cards are {user_cards} and score is {user_score}")
+  print(f"Computers first card is {computer_cards[0]} ")
+  if user_score == 0 or coms_score == 0 or user_score > 21:
+    game_over = True
+  else:
+    continue_game = input(
+            "\nType 'y' to draw another card or 'n' to end. \n")
+    if continue_game == "y":
+      user_cards.append(deal_card())
+    elif continue_game == "n":
+      game_over = True
+  
+while coms_score < 17:
+  computer_cards.append(deal_card())
+  coms_score = calculate_score(computer_cards)
+
+final = compare(user_score, coms_score)
+print(final)
+print(f"Your score was {user_score} and Computers score was {coms_score}")
+print(f"Computers final hand was {computer_cards}")
+
