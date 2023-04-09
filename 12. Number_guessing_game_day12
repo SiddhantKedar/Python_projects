@@ -1,0 +1,30 @@
+import random
+
+def set_difficulty():
+    difficulty = input("Choose a difficulty 'easy' or 'hard': ")
+    if difficulty == "easy":
+        return 10
+    else:
+        return 5
+
+print("Welcome to the Number Guessing game.")
+print("Which number am I thinking? between 1 to 100")
+guess_num = random.randint(1,100)
+lives = set_difficulty()
+
+while lives > 0:
+    guess = int(input("Make a Guess: "))
+    if guess == guess_num:
+        print("Correct guess. \nYou Won")
+        lives = 0
+    elif guess > guess_num:
+        print("Too High")
+        lives -= 1
+        print(f"You have {lives} remaining guesses.")
+    else:
+        print("Too Low")
+        lives -= 1
+        print(f"You have {lives} remaining guesses.")
+    if lives == 0:
+        print("You Lost")
+        print(f"The Guess was {guess_num}")
